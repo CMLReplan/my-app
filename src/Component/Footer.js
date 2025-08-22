@@ -1,9 +1,7 @@
-function Footer() {
+export default function Footer() {
   return (
     <footer>
-      <p>&copy; 2025 Little Lemon Restaurant. All rights reserved.</p>
+      <p>&copy; {new Date().getFullYear()} Little Lemon. All rights reserved.</p>
     </footer>
   );
 }
-
-export default Footer;
