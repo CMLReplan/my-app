@@ -1,0 +1,104 @@
+/* Booking Page Styles */
+.booking-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  text-align: center;
+  background-color: #edefee;
+  min-height: 80vh;
+  font-family: 'Arial', sans-serif;
+}
+
+.booking-page h1 {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+  color: #495e57; /* same as hero heading */
+}
+
+.booking-page p {
+  font-size: 1.2rem;
+  color: #333;
+  margin-bottom: 40px;
+  max-width: 500px;
+}
+
+/* Booking Form Styling */
+.booking-form {
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.booking-form input,
+.booking-form select,
+.booking-form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.booking-form input:focus,
+.booking-form select:focus,
+.booking-form textarea:focus {
+  border-color: #495e57;
+}
+
+/* Button styled like CTA button */
+.booking-form button {
+  background-color: #f4ce14;
+  color: #333;
+  padding: 14px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.booking-form button:hover {
+  background-color: #e3bb0d;
+  transform: scale(1.03);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .booking-page h1 {
+    font-size: 2.2rem;
+  }
+
+  .booking-page p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+  }
+
+  .booking-form {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .booking-page {
+    padding: 40px 15px;
+  }
+
+  .booking-page h1 {
+    font-size: 1.9rem;
+  }
+
+  .booking-page p {
+    font-size: 1rem;
+  }
+}

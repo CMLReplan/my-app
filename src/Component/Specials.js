@@ -2,19 +2,19 @@ const specials = [
   {
     id: 1,
     title: "Greek Salad",
-    image: "/images/greek-salad.jpg",
+    image: "/images/icons_assets/greek salad.jpg",
     description: "Crisp lettuce, feta cheese, and olives."
   },
   {
     id: 2,
     title: "Bruschetta",
-    image: "/images/bruschetta.jpg",
+    image: "/images/icons_assets/bruchetta.svg",
     description: "Grilled bread with fresh tomatoes."
   },
   {
     id: 3,
     title: "Lemon Dessert",
-    image: "/images/lemon-dessert.jpg",
+    image: "/images/icons_assets/lemon dessert.jpg",
     description: "A refreshing sweet treat."
   }
 ];

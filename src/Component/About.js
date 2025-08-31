@@ -12,12 +12,12 @@ export default function About() {
       </div>
       <div className="about-photos">
         <img
-          src="/images/restaurant1.jpg"
+          src="/images/icons_assets/restaurant.jpg"
           alt="Interior"
           className="photo primary"
         />
         <img
-          src="/images/restaurant2.jpg"
+          src="/images/icons_assets/restaurant chef B.jpg"
           alt="Chef preparing food"
           className="photo secondary"
         />
