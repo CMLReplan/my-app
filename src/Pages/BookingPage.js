@@ -1,8 +1,17 @@
+import React from 'react';
+import BookingForm from '../Component/BookingForm';
+
 function BookingPage() {
   return (
-    <div style={{ padding: "50px", textAlign: "center" }}>
-      <h1>Booking Page</h1>
-      <p>Here you can reserve a table.</p>
+    <div className="booking-page">
+      <header className="booking-header">
+        <h1>Reserve Your Table</h1>
+        <p>Book your table at Little Lemon and enjoy an unforgettable experience!</p>
+      </header>
+
+      <section className="booking-section">
+        <BookingForm />
+      </section>
     </div>
   );
 }
