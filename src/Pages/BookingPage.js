@@ -1,7 +1,8 @@
 import React from 'react';
 import BookingForm from '../Component/BookingForm';
+import '../BookingPage.css';
 
-function BookingPage() {
+function BookingPage({ availableTimes, dispatch }) {
   return (
     <div className="booking-page">
       <header className="booking-header">
@@ -10,7 +11,7 @@ function BookingPage() {
       </header>
 
       <section className="booking-section">
-        <BookingForm />
+        <BookingForm availableTimes={availableTimes} dispatch={dispatch} />
       </section>
     </div>
   );
