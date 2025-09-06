@@ -1,8 +1,8 @@
-import React from 'react';
 import BookingForm from '../Component/BookingForm';
 import '../BookingPage.css';
 
-function BookingPage({ availableTimes, dispatch }) {
+function BookingPage({ availableTimes, dispatch, onBookingSubmit}) {
+
   return (
     <div className="booking-page">
       <header className="booking-header">
@@ -11,8 +11,11 @@ function BookingPage({ availableTimes, dispatch }) {
       </header>
 
       <section className="booking-section">
-        <BookingForm availableTimes={availableTimes} dispatch={dispatch} />
-      </section>
+        <BookingForm 
+          availableTimes={availableTimes} 
+          dispatch={dispatch} 
+          onBookingSubmit={onBookingSubmit} />
+       </section>
     </div>
   );
 }

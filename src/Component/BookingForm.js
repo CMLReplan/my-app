@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import '../BookingForm.css';
 
-function BookingForm({ availableTimes, dispatch }) {
+function BookingForm({ availableTimes, dispatch, onBookingSubmit }) {
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const [guests, setGuests] = useState(1);
   const [occasion, setOccasion] = useState('Birthday');
+  const navigate = useNavigate();
 
   const handleDateChange = (e) => {
     const newDate = e.target.value;
@@ -17,9 +19,16 @@ function BookingForm({ availableTimes, dispatch }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log({ date, time, guests, occasion });
-    alert('Reservation submitted!');
+    const formData = { date, time, guests, occasion };
+    onBookingSubmit(formData); // Send data to parent
+    navigate('/confirmed'); // Navigate to confirmation page
+    // Reset the form
+    setDate('');
+    setTime('');
+    setGuests(1);
+    setOccasion('Birthday');
   };
+
 
   return (
     <form
@@ -41,8 +50,8 @@ function BookingForm({ availableTimes, dispatch }) {
         value={time}
         onChange={(e) => setTime(e.target.value)}
       >
-        {availableTimes.map((time) => (
-          <option key={time}>{time}</option>
+        {availableTimes.map((t) => (
+          <option key={t}>{t}</option>
         ))}
       </select>
 

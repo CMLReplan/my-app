@@ -28,6 +28,31 @@
   align-items: center;
 }
 
+.booking-table {
+  width: 100%;
+  margin-top: 20px;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.booking-table th, .booking-table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+.booking-table th {
+  background-color: #495e57;
+  color: white;
+}
+
+.booking-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+
 /* Responsive layout */
 @media (max-width: 768px) {
   .booking-header h1 {

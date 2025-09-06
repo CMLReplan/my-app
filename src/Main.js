@@ -1,18 +1,20 @@
 import React, { useReducer } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate} from "react-router-dom";
 import Homepage from "./Pages/Homepage";
 import BookingPage from "./Pages/BookingPage";
+import ConfirmedBooking from "./Pages/ConfirmedBooking";
+import { fetchAPI, submitAPI } from "./api";
 
-// Function to initialize available times
-const initializeTimes = () => {
-  return ['17:00', '18:00', '19:00', '20:00', '21:00'];
+// Initialize available times using fetchAPI
+export const initializeTimes = () => {
+  const today = new Date();
+  return fetchAPI(today);
 };
 
-// Reducer function to update times
-const updateTimes = (state, action) => {
+// Reducer function to update times when date changes
+export const updateTimes = (state, action) => {
   if (action.type === 'UPDATE_TIMES') {
-    // For now, return the same times regardless of date
-    return ['17:00', '18:00', '19:00', '20:00', '21:00'];
+    return fetchAPI(new Date(action.payload));
   }
   return state;
 };
@@ -20,19 +22,35 @@ const updateTimes = (state, action) => {
 
 function Main() {
   const [availableTimes, dispatch] = useReducer(updateTimes, [], initializeTimes);
+  const navigate = useNavigate();
+
+  const submitForm = (formData) => {
+    const success = submitAPI(formData);
+    if (success) {
+      navigate('/confirmed'); // Navigate to confirmation page on successful submission
+    }
+  };
 
   return (
     <main>
       <Routes>
-        <Route path="/" element={<Homepage />} />
+        <Route 
+          path="/" 
+          element={<Homepage />} 
+        />
         <Route
           path="/booking"
           element={
             <BookingPage
               availableTimes={availableTimes}
               dispatch={dispatch}
+              onBookingSubmit={submitForm}
             />
           }
+        />
+        <Route 
+          path="/confirmed" 
+          element={<ConfirmedBooking />} 
         />
       </Routes>
     </main>
