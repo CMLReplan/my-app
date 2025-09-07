@@ -50,6 +50,7 @@ function BookingForm({ availableTimes, dispatch, onBookingSubmit }) {
         value={time}
         onChange={(e) => setTime(e.target.value)}
       >
+      <option value="">Select a time</option>  
         {availableTimes.map((t) => (
           <option key={t}>{t}</option>
         ))}
@@ -62,7 +63,7 @@ function BookingForm({ availableTimes, dispatch, onBookingSubmit }) {
         min="1"
         max="10"
         value={guests}
-        onChange={(e) => setGuests(e.target.value)}
+        onChange={(e) => setGuests(Number(e.target.value))}
       />
 
       <label htmlFor="occasion">Occasion</label>
