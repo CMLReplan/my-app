@@ -11,11 +11,11 @@ function BookingPage({ availableTimes, dispatch, onBookingSubmit}) {
       </header>
 
       <section className="booking-section">
-        <BookingForm 
-          availableTimes={availableTimes} 
-          dispatch={dispatch} 
+        <BookingForm
+          availableTimes={availableTimes}
+          dispatch={dispatch}
           onBookingSubmit={onBookingSubmit} />
-       </section>
+      </section>
     </div>
   );
 }

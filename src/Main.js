@@ -34,9 +34,9 @@ function Main() {
   return (
     <main>
       <Routes>
-        <Route 
-          path="/" 
-          element={<Homepage />} 
+        <Route
+          path="/"
+          element={<Homepage />}
         />
         <Route
           path="/booking"
@@ -48,9 +48,9 @@ function Main() {
             />
           }
         />
-        <Route 
-          path="/confirmed" 
-          element={<ConfirmedBooking />} 
+        <Route
+          path="/confirmed"
+          element={<ConfirmedBooking />}
         />
       </Routes>
     </main>
