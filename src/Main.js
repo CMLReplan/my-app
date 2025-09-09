@@ -32,7 +32,12 @@ function Main() {
   };
 
   return (
-    <main>
+    <main
+      id="main-content"
+      role="main"
+      aria-label="Little Lemon Main Content"
+      aria-live="polite"
+    >
       <Routes>
         <Route
           path="/"

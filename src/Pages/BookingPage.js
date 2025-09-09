@@ -4,19 +4,30 @@ import '../BookingPage.css';
 function BookingPage({ availableTimes, dispatch, onBookingSubmit}) {
 
   return (
-    <div className="booking-page">
+    <main className="booking-page">
+      {/* Header Section */}
       <header className="booking-header">
         <h1>Reserve Your Table</h1>
-        <p>Book your table at Little Lemon and enjoy an unforgettable experience!</p>
+        <p>
+          Book your table at <strong>Little Lemon</strong> and enjoy an unforgettable experience!
+        </p>
       </header>
 
-      <section className="booking-section">
+      {/* Booking Form Section */}
+      <section
+        className="booking-section"
+        aria-labelledby="booking-form-title"
+        aria-label="Table Reservation Section"
+      >
+        <h2 id="booking-form-title" className="visually-hidden">
+          Table Reservation Form
+        </h2>
         <BookingForm
           availableTimes={availableTimes}
           dispatch={dispatch}
           onBookingSubmit={onBookingSubmit} />
       </section>
-    </div>
+    </main>
   );
 }
 

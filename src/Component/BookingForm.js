@@ -44,21 +44,13 @@ function BookingForm({ availableTimes, dispatch, onBookingSubmit }) {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!date) {
-      newErrors.date = 'Please select a date.';
-    }
+    if (!date) newErrors.date = 'Please select a date.';
 
-    if (!time) {
-      newErrors.time = 'Please select a time.';
-    }
+    if (!time) newErrors.time = 'Please select a time.';
 
-    if (guests < 1 || guests > 10) {
-      newErrors.guests = 'Guests must be between 1 and 10.';
-    }
+    if (guests < 1 || guests > 10) newErrors.guests = 'Guests must be between 1 and 10.';
 
-    if (!occasion.trim()) {
-      newErrors.occasion = 'Please select an occasion.';
-    }
+    if (!occasion.trim()) newErrors.occasion = 'Please select an occasion.';
 
     setErrors(newErrors);
     setIsFormValid(Object.keys(newErrors).length === 0);
@@ -74,67 +66,113 @@ function BookingForm({ availableTimes, dispatch, onBookingSubmit }) {
     <form
       className="booking-form"
       onSubmit={handleSubmit}
+      aria-labelledby='booking-form-title'
+      aria-label="Table reservation form"
+      noValidate
     >
+
+      <fieldset>
+        <legend id="booking-form-title">Reserve a Table</legend>
+
       {/* Date Field */}
-      <label htmlFor="res-date">Choose date</label>
-      <input
-        type="date"
-        id="res-date"
-        value={date}
-        onChange={handleDateChange}
-        required
-        min={new Date().toISOString().split('T')[0]} // Prevent past dates
-      />
-      {errors.date && <span className="error-text">{errors.date}</span>}
+      <div className="form-group">
+        <label htmlFor="res-date">Choose date</label>
+        <input
+          type="date"
+          id="res-date"
+          value={date}
+          onChange={handleDateChange}
+          required
+          aria-required="true"
+          min={new Date().toISOString().split('T')[0]} // Prevent past dates
+          aria-describedby={errors.date ? 'date-error' : undefined}
+        />
+      {errors.date && (
+        <span id="date-error" className="error-text" role="alert" aria-live="polite">
+          {errors.date}
+        </span>
+        )}
+      </div>
 
       {/* Time Field */}
-      <label htmlFor="res-time">Choose time</label>
-      <select
-        id="res-time"
-        value={time}
-        onChange={(e) => setTime(e.target.value)}
-        required
-      >
-      <option value="">Select a time</option>
-        {availableTimes.map((t) => (
-          <option key={t} value={t}>
-            {t}
-          </option>
-        ))}
-      </select>
-      {errors.time && <span className="error-text">{errors.time}</span>}
+      <div className="form-group">
+        <label htmlFor="res-time">Choose time</label>
+          <select
+            id="res-time"
+            value={time}
+            onChange={(e) => setTime(e.target.value)}
+            required
+            aria-required="true"
+            aria-describedby={errors.time ? 'time-error' : undefined}
+          >
+          <option value="">Select a time</option>
+            {availableTimes.map((t) => (
+              <option key={t} value={t}>
+                {t}
+              </option>
+            ))}
+          </select>
+        {errors.time && (
+          <span id="time-error" className="error-text" role="alert" aria-live="polite">
+            {errors.time}
+          </span>
+        )}
+      </div>
 
-        {/* Guest Field */}
-      <label htmlFor="guests">Number of guests</label>
-      <input
-        type="number"
-        id="guests"
-        min="1"
-        max="10"
-        value={guests}
-        onChange={(e) => setGuests(Number(e.target.value))}
-        required
-      />
-      {errors.guests && <span className="error-text">{errors.guests}</span>}
+      {/* Guest Field */}
+      <div className="form-group">
+        <label htmlFor="guests">Number of guests</label>
+          <input
+            type="number"
+            id="guests"
+            min="1"
+            max="10"
+            value={guests}
+            onChange={(e) => setGuests(Number(e.target.value))}
+            required
+            aria-required="true"
+            aria-describedby={errors.guests ? 'guests-error' : undefined}
+          />
+      {errors.guests && (
+        <span id="guests-error" className="error-text" role="alert" aria-live="polite">
+          {errors.guests}
+          </span>
+        )}
+      </div>
 
       {/* Occasion Field */}
-      <label htmlFor="occasion">Occasion</label>
-      <select
-        id="occasion"
-        value={occasion}
-        onChange={(e) => setOccasion(e.target.value)}
-        required
-      >
-        <option>Birthday</option>
-        <option>Anniversary</option>
-        <option>Other</option>
-      </select>
-      {errors.occasion && <span className="error-text">{errors.occasion}</span>}
-
+      <div className="form-group">
+        <label htmlFor="occasion">Occasion</label>
+        <select
+          id="occasion"
+          value={occasion}
+          onChange={(e) => setOccasion(e.target.value)}
+          required
+          aria-required="true"
+          aria-describedby={errors.occasion ? 'occasion-error' : undefined}
+        >
+          <option>Birthday</option>
+          <option>Anniversary</option>
+          <option>Other</option>
+        </select>
+        {errors.occasion && (
+          <span id="occasion-error" className="error-text" role="alert" aria-live="polite">
+            {errors.occasion}
+          </span>
+        )}
+      </div>
       {/* Submit Button */}
-      <button type="submit" disabled={!isFormValid}>
-        Make Your Reservation
-      </button>
+        <div className="form-actions">
+          <button
+            type="submit"
+            disabled={!isFormValid}
+            aria-disabled={!isFormValid}
+            aria-label="On Click Make Your Reservation"
+          >
+            Make Your Reservation
+          </button>
+        </div>
+      </fieldset>
     </form>
   );
 }

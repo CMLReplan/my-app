@@ -21,17 +21,36 @@ const specials = [
 
 export default function Specials() {
   return (
-    <section id="specials" className="specials container">
-      <h2>This Week’s Specials</h2>
-      <div className="specials-grid">
+    <section
+      id="specials"
+      className="specials container"
+      aria-labelledby="specials-heading"
+    >
+      <header>
+        <h2 id="specials-heading">This Week’s Specials</h2>
+      </header>
+
+      <ul className="specials-grid">
         {specials.map(item => (
-          <div key={item.id} className="special-card">
-            <img src={item.image} alt={item.title} />
-            <h3>{item.title}</h3>
-            <p>{item.description}</p>
-          </div>
+          <li key={item.id} className="special-card">
+            <article>
+              <img
+                src={item.image}
+                alt={item.title}
+                aria-label="Image of {item.title}"
+              />
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+              <button
+                type="button"
+                aria-label={`Order ${item.title} now`}
+              >
+                Order Now
+              </button>
+            </article>
+          </li>
         ))}
-      </div>
+      </ul>
     </section>
   );
 }

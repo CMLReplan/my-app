@@ -1,10 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import '../ConfirmedBooking.css';
 
 function ConfirmedBooking() {
   return (
-    <section style={{ textAlign: 'center', marginTop: '50px' }}>
-      <h1>Booking Confirmed!</h1>
-      <p>Thank you for your reservation. We look forward to serving you!</p>
+    <section className="confirmed-booking" aria-labelledby="booking-title">
+      <div className="confirmed-container">
+        <h1 id="booking-title">Booking Confirmed!</h1>
+        <p role="status">
+          Thank you for your reservation. We look forward to serving you!
+        </p>
+        <Link to="/" className="home-link">
+          <button type="button" className="back-home-btn">Back to Home</button>
+        </Link>
+      </div>
     </section>
   );
 }
