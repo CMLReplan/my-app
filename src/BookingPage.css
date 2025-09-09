@@ -12,49 +12,75 @@
 }
 
 .booking-header h1 {
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   color: #333;
   margin-bottom: 10px;
+  font-weight: 700;
 }
 
 .booking-header p {
   font-size: 1rem;
   color: #555;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
 }
 
 .booking-section {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.booking-table {
-  width: 100%;
-  margin-top: 20px;
-  border-collapse: collapse;
+  align-items: flex-start;
+  padding: 20px;
   background-color: #fff;
-  border-radius: 8px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Focus & Accessibility Enhancements */
+.booking-header h1,
+.booking-header p {
+  outline: none;
+}
+
+.booking-section:focus-within {
+  box-shadow: 0 0 0 3px #f4ce14;
+  border-radius: 12px;
+  transition: box-shadow 0.3s ease;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
   overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
-.booking-table th, .booking-table td {
-  padding: 12px;
-  text-align: center;
-  border: 1px solid #ddd;
+/* Responsive layout */
+@media (max-width: 1024px) {
+  .booking-header h1 {
+    font-size: 2rem;
+  }
+  .booking-header p {
+    font-size: 1rem;
+  }
+  .booking-section {
+    padding: 15px;
+    max-width: 90%;
+  }
 }
-
-.booking-table th {
-  background-color: #495e57;
-  color: white;
-}
-
-.booking-table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-
 
 /* Responsive layout */
 @media (max-width: 768px) {
+  .booking-page {
+    padding: 20px 10px;
+  }
   .booking-header h1 {
     font-size: 1.8rem;
   }
@@ -63,5 +89,10 @@
   }
   .booking-section {
     flex-direction: column;
+    align-items: center;
+    padding: 15px;
+    width: 100%;
+    box-shadow: none;
+    border-radius: 0;
   }
 }
