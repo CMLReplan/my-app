@@ -34,7 +34,8 @@ body {
 }
 
 .logo img {
-  max-height: 40px;
+    width: 160px;
+  height: auto;
 }
 
 .logo h2 {
@@ -64,29 +65,35 @@ body {
 /* Hero */
 .hero {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 500px;
+  flex-direction: column;
   background-color: #495e57;
-  gap: 2rem;
-  padding: 2rem;
+  margin-bottom: min(12rem, 13vw);
+  padding: 2rem 0;
+  position: relative;
 }
 
 .hero img {
-  max-height: 100%;
-  max-width: 320px;
-  height: auto;
-  width: 100%;
-  padding: 1rem;
-  border-radius: 12px;
-  object-fit: cover;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    z-index: 1;
+    flex: 1;
+    justify-content: center;
+    top: 3rem;
+    right: 25%;
+    width: clamp(250px, 40%, 328px);
+    aspect-ratio: 328 / 400;
+    height: auto;
+    object-fit: cover;
+    border-radius: 16px;
 }
 
 .hero-text {
+  z-index: 1;
+  left: 30%;
+  align-items: flex-start;
   text-align: left;
   color: #fff;
   max-width: 450px;
+  position: relative;
 }
 
 .hero-text h1 {
@@ -129,6 +136,7 @@ body {
 /* Specials */
 .specials {
   padding: 3rem 1.5rem;
+  max-width: 1600px;;
 }
 
 .specials h2 {
@@ -145,7 +153,7 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
   list-style: none;
-  padding: 0;
+  padding: 2;
   margin: 0;
 }
 
@@ -399,18 +407,23 @@ footer p {
   }
 
   .hero {
+    flex-direction: column;
+    align-items: center;
     gap: 1.5rem;
     padding: 1.5rem;
-    height: 450px;
+    height: auto;
   }
 
   .hero img {
+    position: static;
     max-width: 250px;
     padding: 0.75rem;
   }
 
   .hero-text {
     max-width: 400px;
+    text-align: center;
+    left: auto;
   }
 
   .hero-text h1 {
@@ -508,9 +521,10 @@ footer p {
 
   .hero {
     flex-direction: column;
+    align-items: center;
     text-align: center;
-    height: auto;
     padding: 2rem 1rem;
+    gap: 1rem;
   }
 
   .hero img {
@@ -520,7 +534,7 @@ footer p {
   }
 
   .hero-text {
-    max-width: 200px;
+    max-width: 90%;
     margin-left: 0 auto;
     text-align: center;
   }
